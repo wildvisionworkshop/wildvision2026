@@ -55,6 +55,10 @@
     @media (min-width: 1200px) and (max-width: 1399.98px) { .important-dates .card-body h5 { font-size: 1em; } }
     @media (min-width: 992px) and (max-width: 1199.98px) { .important-dates .card-body h5 { font-size: 0.85em; } }
     @media (max-width: 575.98px) { .important-dates .card-body h5 { white-space: normal; } }
+    /* Organizer cards: uniform internal alignment across cards */
+    #organizers .card-body { display: flex; flex-direction: column; align-items: center; }
+    #organizers .card-body h5 { min-height: 2.6em; display: flex; align-items: center; justify-content: center; line-height: 1.3; font-size: 1.05em; white-space: nowrap; }
+    @media (min-width: 992px) and (max-width: 1199.98px) { #organizers .card-body h5 { font-size: 0.85em; } }
     /* Emphasis in light blue; external text links in light blue with permanent underline */
     #main strong, #main em { color: #0188a9; }
     a.ext-link { color: #0188a9; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
@@ -112,9 +116,12 @@
                 <div style="font-size: 0.9em; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Seconds</div>
               </div>
             </div>
+            <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 10px; font-size: 1.25em; line-height: 1.4; text-align: center;">
+              <a href="https://bmvc2026.bmva.org" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #0188a9; font-weight: 700; text-decoration: none; line-height: 1.4;"><i class="bi bi-building" style="margin-right: 8px; line-height: 1; display: inline-flex; align-items: center;"></i>British Machine Vision Conference (BMVC).</a>
+            </div>
             <div style="display: flex; justify-content: center; align-items: center; gap: 12px 30px; flex-wrap: wrap; color: #0188a9; font-weight: 600; font-size: 1.15em; line-height: 1.4; text-align: center;">
-              <span style="display: inline-flex; align-items: center; white-space: nowrap;"><i class="bi bi-calendar-event-fill" style="margin-right: 8px; line-height: 1; display: inline-flex; align-items: center;"></i>November 26th, 2026</span>
-              <a href="https://bmvc2026.bmva.org" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; white-space: nowrap; color: #0188a9; text-decoration: none; line-height: 1.4;"><i class="bi bi-geo-alt-fill" style="margin-right: 8px; line-height: 1; display: inline-flex; align-items: center;"></i>Lancaster Town Hall, Lancaster, UK</a>
+              <span style="display: inline-flex; align-items: center; white-space: nowrap;"><i class="bi bi-calendar-event-fill" style="margin-right: 8px; line-height: 1; display: inline-flex; align-items: center;"></i>November 26th, 2026.</span>
+              <span style="display: inline-flex; align-items: center; white-space: nowrap;"><i class="bi bi-geo-alt-fill" style="margin-right: 8px; line-height: 1; display: inline-flex; align-items: center;"></i>Lancaster Town Hall, Lancaster, UK.</span>
             </div>
           </div>
         </div>
@@ -122,7 +129,7 @@
         <div class="actions">
           <a href="#callforpapers" class="btn-get-started" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">CALL FOR PAPERS</a>
           <a href="#dataset" class="btn-services" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">IMPORTANT DATES</a>
-          <a href="#BMVC" class="btn-get-started contest-link" data-external-url="https://www.bmva.org/bmvc" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">BMVC WEBSITE</a>
+          <a href="#BMVC" class="btn-get-started contest-link" data-external-url="https://bmvc2026.bmva.org" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">BMVC WEBSITE</a>
 
         </div>
       </div>
@@ -274,7 +281,7 @@
                     <strong style="color: #0188a9;">PAPER LENGTH:</strong> We invite the submission of regular papers; manuscripts must be longer than <strong>five pages</strong>.
                   </p>
                   <p style="font-size: 1.1em; line-height: 2; color: #2c3e50; margin: 0 0 15px; text-align: justify;">
-                    <strong style="color: #0188a9;">FORMATTING:</strong> Manuscripts must comply with the same formatting guidelines required by the main conference, <a class="ext-link" href="https://www.bmva.org/bmvc" target="_blank" rel="noopener">BMVC</a>.
+                    <strong style="color: #0188a9;">FORMATTING:</strong> Manuscripts must comply with the same formatting guidelines required by the main conference, <a class="ext-link" href="https://bmvc2026.bmva.org" target="_blank" rel="noopener">BMVC</a>.
                   </p>
                   <p style="font-size: 1.1em; line-height: 2; color: #2c3e50; margin: 0 0 15px; text-align: justify;">
                     <strong style="color: #0188a9;">PROCEEDINGS:</strong> All <strong>accepted</strong> papers will be <strong>published in the proceedings</strong>, together with those of the main conference.
@@ -379,7 +386,7 @@
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 8px; text-transform: uppercase;">Petia Radeva</h5>
                 <p style="margin: 0 0 12px; color: #5a6c7d; font-size: 0.95em; line-height: 1.7;">
-                  <strong>Full Professor</strong><br/>
+                  <strong>Full Professor.</strong><br/>
                   University of Barcelona, Spain.
                 </p>
                 <p style="margin: 0; color: #4a5568; font-size: 0.95em; line-height: 1.8; text-align: justify;">
@@ -395,7 +402,7 @@
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 8px; text-transform: uppercase;">Cees Snoek</h5>
                 <p style="margin: 0 0 12px; color: #5a6c7d; font-size: 0.95em; line-height: 1.7;">
-                  <strong>Full Professor</strong><br/>
+                  <strong>Full Professor.</strong><br/>
                   University of Amsterdam, The Netherlands.
                 </p>
                 <p style="margin: 0; color: #4a5568; font-size: 0.95em; line-height: 1.8; text-align: justify;">
@@ -424,15 +431,15 @@
         <div class="row justify-content-center">
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card text-center h-100 shadow-sm" style="border-radius: 12px; border-top: 4px solid #0188a9; background: #eaf7fa;">
-              <div class="card-body" style="padding: 30px 20px;">
+              <div class="card-body" style="padding: 30px 14px;">
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 12px; text-transform: uppercase;">GEORGE AZZOPARDI</h5>
                 <p style="margin: 0; color: #5a6c7d; font-size: 0.92em; line-height: 1.7;">
-                  <strong>Associate Professor</strong><br/>
-                  University of Groningen, The Netherlands.
+                  <strong>Associate Professor.</strong><br/>
+                  University of Groningen, NLD.
                 </p>
-                <p style="margin: 12px 0 0; color: #0188a9; font-size: 0.92em;">
-                  <i class="bi bi-envelope-fill" style="margin-right: 6px;"></i><a href="mailto:g.azzopardi@rug.nl" style="color: #0188a9; text-decoration: none;">g.azzopardi@rug.nl</a>
+                <p style="margin: auto 0 0; padding-top: 12px; color: #0188a9; font-size: 0.92em; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-envelope-fill" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i><a href="mailto:g.azzopardi@rug.nl" style="color: #0188a9; text-decoration: none;">g.azzopardi@rug.nl</a>
                 </p>
                 <a href="https://www.rug.nl/staff/g.azzopardi/?lang=en" target="_blank" rel="noopener" class="btn-get-started" style="display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; padding: 6px 16px; border-radius: 20px; background: #0188a9; color: #ffffff; font-size: 0.85em; font-weight: 600; text-decoration: none; line-height: 1.4;">
                   <i class="bi bi-globe2" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i>Personal Website
@@ -443,15 +450,15 @@
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card text-center h-100 shadow-sm" style="border-radius: 12px; border-top: 4px solid #0188a9; background: #eaf7fa;">
-              <div class="card-body" style="padding: 30px 20px;">
+              <div class="card-body" style="padding: 30px 14px;">
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 12px; text-transform: uppercase;">LAURA FERNÁNDEZ-ROBLES</h5>
                 <p style="margin: 0; color: #5a6c7d; font-size: 0.92em; line-height: 1.7;">
-                  <strong>Associate Professor</strong><br/>
-                  University of León, Spain.
+                  <strong>Associate Professor.</strong><br/>
+                  University of León, ESP.
                 </p>
-                <p style="margin: 12px 0 0; color: #0188a9; font-size: 0.92em;">
-                  <i class="bi bi-envelope-fill" style="margin-right: 6px;"></i><a href="mailto:lferr@unileon.es" style="color: #0188a9; text-decoration: none;">lferr@unileon.es</a>
+                <p style="margin: auto 0 0; padding-top: 12px; color: #0188a9; font-size: 0.92em; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-envelope-fill" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i><a href="mailto:lferr@unileon.es" style="color: #0188a9; text-decoration: none;">lferr@unileon.es</a>
                 </p>
                 <a href="https://portalcientifico.unileon.es/investigadores/97431/detalle" target="_blank" rel="noopener" class="btn-get-started" style="display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; padding: 6px 16px; border-radius: 20px; background: #0188a9; color: #ffffff; font-size: 0.85em; font-weight: 600; text-decoration: none; line-height: 1.4;">
                   <i class="bi bi-globe2" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i>Personal Website
@@ -462,15 +469,15 @@
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card text-center h-100 shadow-sm" style="border-radius: 12px; border-top: 4px solid #0188a9; background: #eaf7fa;">
-              <div class="card-body" style="padding: 30px 20px;">
+              <div class="card-body" style="padding: 30px 14px;">
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 12px; text-transform: uppercase;">ANTONIO GRECO</h5>
                 <p style="margin: 0; color: #5a6c7d; font-size: 0.92em; line-height: 1.7;">
-                  <strong>Associate Professor</strong><br/>
-                  University of Salerno, Italy.
+                  <strong>Associate Professor.</strong><br/>
+                  University of Salerno, ITA.
                 </p>
-                <p style="margin: 12px 0 0; color: #0188a9; font-size: 0.92em;">
-                  <i class="bi bi-envelope-fill" style="margin-right: 6px;"></i><a href="mailto:agreco@unisa.it" style="color: #0188a9; text-decoration: none;">agreco@unisa.it</a>
+                <p style="margin: auto 0 0; padding-top: 12px; color: #0188a9; font-size: 0.92em; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-envelope-fill" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i><a href="mailto:agreco@unisa.it" style="color: #0188a9; text-decoration: none;">agreco@unisa.it</a>
                 </p>
                 <a href="https://docenti.unisa.it/026557/home" target="_blank" rel="noopener" class="btn-get-started" style="display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; padding: 6px 16px; border-radius: 20px; background: #0188a9; color: #ffffff; font-size: 0.85em; font-weight: 600; text-decoration: none; line-height: 1.4;">
                   <i class="bi bi-globe2" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i>Personal Website
@@ -481,15 +488,15 @@
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card text-center h-100 shadow-sm" style="border-radius: 12px; border-top: 4px solid #0188a9; background: #eaf7fa;">
-              <div class="card-body" style="padding: 30px 20px;">
+              <div class="card-body" style="padding: 30px 14px;">
                 <div style="font-size: 2.4em; color: #0188a9; margin-bottom: 15px;"><i class="bi bi-person-circle"></i></div>
                 <h5 style="font-weight: 700; color: #0188a9; margin-bottom: 12px; text-transform: uppercase;">BRUNO VENTO</h5>
                 <p style="margin: 0; color: #5a6c7d; font-size: 0.92em; line-height: 1.7;">
-                  <strong>Post-Doc Researcher</strong><br/>
-                  Consorzio Interuniversitario Nazionale per l'Informatica, Italy.
+                  <strong>Post-Doc Researcher.</strong><br/>
+                  CINI, ITA.
                 </p>
-                <p style="margin: 12px 0 0; color: #0188a9; font-size: 0.92em;">
-                  <i class="bi bi-envelope-fill" style="margin-right: 6px;"></i><a href="mailto:brunovento.it@gmail.com" style="color: #0188a9; text-decoration: none;">brunovento.it@gmail.com</a>
+                <p style="margin: auto 0 0; padding-top: 12px; color: #0188a9; font-size: 0.92em; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-envelope-fill" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i><a href="mailto:brunovento.it@gmail.com" style="color: #0188a9; text-decoration: none;">brunovento.it@gmail.com</a>
                 </p>
                 <a href="https://scholar.google.com/citations?user=ffvBB1EAAAAJ&amp;hl=it" target="_blank" rel="noopener" class="btn-get-started" style="display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; padding: 6px 16px; border-radius: 20px; background: #0188a9; color: #ffffff; font-size: 0.85em; font-weight: 600; text-decoration: none; line-height: 1.4;">
                   <i class="bi bi-globe2" style="margin-right: 6px; line-height: 1; display: inline-flex; align-items: center;"></i>Personal Website
