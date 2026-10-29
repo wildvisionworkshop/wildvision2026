@@ -70,6 +70,87 @@
     .navbar .active, .navbar .active:focus { color: #ffffff !important; }
     .back-to-top:hover { background: #25aecf !important; }
     button[type="submit"]:hover { background: #25aecf !important; transform: translateY(-2px); }
+
+    /* ======= Workshop Schedule (timeline) ======= */
+    /* Category colors: change them here to restyle the whole schedule */
+    #schedule {
+      --sch-talk: #0188a9;      /* Invited talks */
+      --sch-oral: #2f6db5;      /* Oral sessions */
+      --sch-ceremony: #5a6c7d;  /* Welcome & closing */
+      --sch-break: #c08a3e;     /* Workshop breaks */
+      --sch-short: #25aecf;     /* Short breaks */
+      --sch-bmvc: #2a9d8f;      /* Breaks & meals organized by BMVC */
+      --sch-time-w: 110px;
+      --sch-marker: 46px;
+      --sch-gap: 18px;
+    }
+    #schedule .is-talk { --c: var(--sch-talk); }
+    #schedule .is-oral { --c: var(--sch-oral); }
+    #schedule .is-ceremony { --c: var(--sch-ceremony); }
+    #schedule .is-break { --c: var(--sch-break); --c-bg: #fffaf2; --c-line: rgba(192, 138, 62, 0.45); --c-ink: #6e4a10; }
+    #schedule .is-break.is-short { --c: var(--sch-short); --c-bg: #f2fbfd; --c-line: rgba(37, 174, 207, 0.45); --c-ink: #0b5266; }
+    #schedule .is-break.is-bmvc { --c: var(--sch-bmvc); --c-bg: #f1faf8; --c-line: rgba(42, 157, 143, 0.45); --c-ink: #134f47; }
+    /* Icons: drop Bootstrap Icons' baseline offset so glyphs sit at the true center of their box */
+    #schedule .sch-meta-bar i, #schedule .sch-box i { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+    #schedule .sch-meta-bar i::before, #schedule .sch-box i::before { display: block; vertical-align: 0; line-height: 1; }
+    /* Typography: Raleway for titles (as all site headings), Open Sans for everything else */
+    #schedule .sch-box { font-family: "Open Sans", sans-serif; }
+    #schedule .sch-meta-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 36px; color: #0188a9; font-weight: 600; font-size: 1.15em; line-height: 1.4; margin-bottom: 40px; }
+    #schedule .sch-meta-bar span { display: inline-flex; align-items: center; }
+    #schedule .sch-meta-bar i { margin-right: 8px; }
+    #schedule .sch-box { border-radius: 30px; background: #eaf7fa; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12); overflow: hidden; }
+    #schedule .sch-box-band { background: #0188a9; height: 10px; }
+    #schedule .sch-box-body { padding: 50px 60px; }
+    #schedule .sch-timeline { position: relative; list-style: none; padding: 0; margin: 0 auto; max-width: 940px; }
+    #schedule .sch-timeline::before { content: ""; position: absolute; top: 20px; bottom: 20px; left: calc(var(--sch-time-w) + var(--sch-gap) + var(--sch-marker) / 2 - 1px); width: 2px; background: linear-gradient(#0188a9, #25aecf); opacity: 0.35; }
+    #schedule .sch-item { position: relative; display: grid; grid-template-columns: var(--sch-time-w) var(--sch-marker) 1fr; grid-template-areas: "time marker card"; column-gap: var(--sch-gap); align-items: start; margin-bottom: 18px; }
+    #schedule .sch-item:last-child { margin-bottom: 0; }
+    #schedule .sch-time { grid-area: time; text-align: right; padding-top: 9px; font-variant-numeric: tabular-nums; }
+    #schedule .sch-start { display: block; font-size: 1.3em; font-weight: 700; color: #0188a9; line-height: 1.1; }
+    /* Markers: --m is the circle diameter; the icon always scales to the same ratio of it */
+    #schedule .sch-marker { --m: var(--sch-marker); grid-area: marker; justify-self: center; position: relative; z-index: 1; width: var(--m); height: var(--m); border-radius: 50%; background: var(--c); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: calc(var(--m) * 0.42); box-shadow: 0 0 0 5px #eaf7fa, 0 5px 15px rgba(0, 0, 0, 0.12); }
+    #schedule .sch-card { grid-area: card; min-width: 0; background: #ffffff; border-radius: 16px; padding: 20px 24px; box-shadow: 0 8px 25px rgba(1, 136, 169, 0.12); border-left: 5px solid var(--c); }
+    #schedule .is-talk .sch-card { background: linear-gradient(135deg, #ffffff 55%, #e3f4f8 100%); }
+    #schedule .sch-type { display: block; font-size: 0.75em; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--c); line-height: 1.4; margin-bottom: 4px; }
+    #schedule .sch-title { font-family: "Raleway", sans-serif; font-weight: 700; color: #0188a9; font-size: 1.2em; line-height: 1.3; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    #schedule .sch-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    /* Tags: one shape for all, one pastel color per tag category */
+    #schedule .sch-tag { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 20px; border: 1px solid var(--t-line); background: var(--t-bg); color: var(--t-ink); font-size: 0.72em; font-weight: 700; letter-spacing: 0.6px; line-height: 1.3; text-transform: uppercase; white-space: nowrap; }
+    #schedule .tag-dur { --t-bg: #dcecfb; --t-ink: #163f69; --t-line: #bcd8f3; }   /* Duration */
+    #schedule .tag-mode { --t-bg: #daf2e6; --t-ink: #15553b; --t-line: #b4e2cb; }  /* In person / online */
+    #schedule .tag-talk { --t-bg: #e9e5fa; --t-ink: #3d3185; --t-line: #d0c8f2; }  /* Presentation length */
+    #schedule .tag-qa { --t-bg: #fde5d6; --t-ink: #7f3812; --t-line: #f5c8ab; }    /* Q&A */
+    #schedule .tag-host { --t-bg: #fbe2ea; --t-ink: #7d1f45; --t-line: #f2c2d2; margin-left: auto; }  /* Organized by BMVC */
+    #schedule .sch-time .sch-tag { margin-top: 6px; }
+    /* Paper slots: same shape as tags, one pastel color per slot position */
+    #schedule .sch-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; list-style: none; padding: 0; margin: 14px 0 0; }
+    #schedule .sch-slots li { background: var(--s-bg); border: 1px solid var(--s-line); border-top: 3px solid var(--s-ink); border-radius: 10px; padding: 7px 6px; text-align: center; color: var(--s-ink); font-size: 0.72em; font-weight: 700; letter-spacing: 0.6px; line-height: 1.4; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+    #schedule .sch-slots li b { display: block; font-size: 1.3em; letter-spacing: 0; }
+    #schedule .sch-slots li:nth-child(1) { --s-bg: #fdf3c8; --s-ink: #6b4f00; --s-line: #f1df98; }  /* Butter */
+    #schedule .sch-slots li:nth-child(2) { --s-bg: #d4f1f4; --s-ink: #0c5660; --s-line: #a9dfe5; }  /* Aqua */
+    #schedule .sch-slots li:nth-child(3) { --s-bg: #f3e1f7; --s-ink: #6b2580; --s-line: #e2c2eb; }  /* Orchid */
+    #schedule .sch-slots li:nth-child(4) { --s-bg: #e2f0d6; --s-ink: #355c19; --s-line: #c5dfae; }  /* Sage */
+    #schedule .sch-slots li:nth-child(5) { --s-bg: #fde0dc; --s-ink: #8a2b21; --s-line: #f4beb6; }  /* Coral */
+    /* Opening/closing: compact cards */
+    #schedule .is-ceremony .sch-card { padding: 14px 24px; }
+    /* Breaks: lighter, compact rows with a dashed marker */
+    #schedule .is-break .sch-time { padding-top: 5px; }
+    #schedule .is-break .sch-start { font-size: 1.1em; color: #3f4d59; }
+    #schedule .is-break .sch-marker { --m: 34px; margin-top: 6px; background: #ffffff; color: var(--c); border: 2px dashed var(--c); }
+    #schedule .is-break .sch-card { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; padding: 10px 20px; background: var(--c-bg); box-shadow: none; border: 1px dashed var(--c-line); border-left: 5px solid var(--c); }
+    #schedule .is-break .sch-title { font-size: 1em; color: var(--c-ink); }
+    @media (max-width: 991.98px) { #schedule .sch-box-body { padding: 40px 30px; } }
+    @media (max-width: 767.98px) {
+      #schedule { --sch-marker: 38px; --sch-gap: 14px; }
+      #schedule .sch-box-body { padding: 30px 16px; }
+      #schedule .sch-timeline::before { left: calc(var(--sch-marker) / 2 - 1px); }
+      #schedule .sch-item { grid-template-columns: var(--sch-marker) 1fr; grid-template-areas: "marker time" "marker card"; row-gap: 6px; }
+      #schedule .sch-time { text-align: left; padding-top: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+      #schedule .sch-start, #schedule .is-break .sch-start { display: inline; font-size: 1.05em; }
+      #schedule .sch-time .sch-tag { margin-top: 0; }
+      #schedule .is-break .sch-marker { --m: 30px; margin-top: 0; }
+      #schedule .sch-card, #schedule .is-ceremony .sch-card { padding: 16px 18px; }
+    }
   </style>
 
   <!-- =======================================================
@@ -414,6 +495,165 @@
         </div>
       </div>
     </section><!-- End Invited Speakers Section -->
+
+    <!-- ======= Workshop Schedule Section ======= -->
+    <section class="body_content" id="schedule">
+      <div class="container wow fadeInUp">
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h3 class="section-title" style="font-size: 2.5em; color: #0188a9; display: inline-flex; align-items: center; line-height: 1;">
+              <i class="bi bi-clock-fill" style="color: #0188a9; margin-right: 15px; line-height: 1;"></i>
+              Workshop Schedule
+            </h3>
+            <div class="section-title-divider"></div>
+            <div class="sch-meta-bar">
+              <span><i class="bi bi-calendar-event-fill"></i>November 26th, 2026.</span>
+              <span><i class="bi bi-geo-alt-fill"></i>Lancaster Town Hall, Lancaster, UK.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sch-box">
+              <div class="sch-box-band"></div>
+              <div class="sch-box-body">
+                <ol class="sch-timeline">
+                  <li class="sch-item is-break is-bmvc">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T08:30">08:30</time><span class="sch-tag tag-dur">30 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-cup-fill"></i></div>
+                    <div class="sch-card">
+                      <h5 class="sch-title">Tea &amp; Coffee</h5>
+                      <span class="sch-tag tag-host" title="Provided by BMVC"><i class="bi bi-building"></i>BMVC</span>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-ceremony">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T09:00">09:00</time><span class="sch-tag tag-dur">5 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-door-open-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Opening</span>
+                      <h5 class="sch-title">Welcome and Workshop Introduction</h5>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-talk">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T09:05">09:05</time><span class="sch-tag tag-dur">40 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-mic-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Invited Talk 1</span>
+                      <h5 class="sch-title">Petia Radeva</h5>
+                      <div class="sch-pills">
+                        <span class="sch-tag tag-mode"><i class="bi bi-person-fill"></i>In Person</span>
+                        <span class="sch-tag tag-talk"><i class="bi bi-stopwatch-fill"></i>35 min. presentation</span>
+                        <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>5 min. Q&amp;A</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-break is-short">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T09:45">09:45</time><span class="sch-tag tag-dur">5 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-pause-circle-fill"></i></div>
+                    <div class="sch-card">
+                      <h5 class="sch-title">Short Break</h5>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-talk">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T09:50">09:50</time><span class="sch-tag tag-dur">40 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-mic-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Invited Talk 2</span>
+                      <h5 class="sch-title">Cees Snoek</h5>
+                      <div class="sch-pills">
+                        <span class="sch-tag tag-mode"><i class="bi bi-camera-video-fill"></i>Online</span>
+                        <span class="sch-tag tag-talk"><i class="bi bi-stopwatch-fill"></i>35 min. presentation</span>
+                        <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>5 min. Q&amp;A</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-break">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T10:30">10:30</time><span class="sch-tag tag-dur">15 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-cup-fill"></i></div>
+                    <div class="sch-card">
+                      <h5 class="sch-title">Break</h5>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-oral">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T10:45">10:45</time><span class="sch-tag tag-dur">50 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-easel-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Oral Session 1</span>
+                      <h5 class="sch-title">Accepted Papers</h5>
+                      <div class="sch-pills">
+                        <span class="sch-tag tag-talk"><i class="bi bi-stopwatch-fill"></i>8 min. presentation</span>
+                        <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>2 min. Q&amp;A</span>
+                      </div>
+                      <ul class="sch-slots">
+                        <li><b>10:45</b>Paper 1</li>
+                        <li><b>10:55</b>Paper 2</li>
+                        <li><b>11:05</b>Paper 3</li>
+                        <li><b>11:15</b>Paper 4</li>
+                        <li><b>11:25</b>Paper 5</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-break is-short">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T11:35">11:35</time><span class="sch-tag tag-dur">5 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-pause-circle-fill"></i></div>
+                    <div class="sch-card">
+                      <h5 class="sch-title">Short Break</h5>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-oral">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T11:40">11:40</time><span class="sch-tag tag-dur">50 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-easel-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Oral Session 2</span>
+                      <h5 class="sch-title">Accepted Papers</h5>
+                      <div class="sch-pills">
+                        <span class="sch-tag tag-talk"><i class="bi bi-stopwatch-fill"></i>8 min. presentation</span>
+                        <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>2 min. Q&amp;A</span>
+                      </div>
+                      <ul class="sch-slots">
+                        <li><b>11:40</b>Paper 1</li>
+                        <li><b>11:50</b>Paper 2</li>
+                        <li><b>12:00</b>Paper 3</li>
+                        <li><b>12:10</b>Paper 4</li>
+                        <li><b>12:20</b>Paper 5</li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-ceremony">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T12:30">12:30</time><span class="sch-tag tag-dur">5 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-flag-fill"></i></div>
+                    <div class="sch-card">
+                      <span class="sch-type">Closing</span>
+                      <h5 class="sch-title">Closing Remarks</h5>
+                    </div>
+                  </li>
+
+                  <li class="sch-item is-break is-bmvc">
+                    <div class="sch-time"><time class="sch-start" datetime="2026-11-26T12:35">12:35</time><span class="sch-tag tag-dur">55 min.</span></div>
+                    <div class="sch-marker"><i class="bi bi-egg-fried"></i></div>
+                    <div class="sch-card">
+                      <h5 class="sch-title">Lunch</h5>
+                      <span class="sch-tag tag-host" title="Provided by BMVC"><i class="bi bi-building"></i>BMVC</span>
+                    </div>
+                  </li>
+                </ol>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Workshop Schedule Section -->
 
     <!-- ======= Organizers Section ======= -->
     <section class="body_content" id="organizers">
