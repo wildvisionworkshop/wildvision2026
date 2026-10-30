@@ -122,10 +122,14 @@
     #schedule .tag-qa { --t-bg: #fde5d6; --t-ink: #7f3812; --t-line: #f5c8ab; }    /* Q&A */
     #schedule .tag-host { --t-bg: #fbe2ea; --t-ink: #7d1f45; --t-line: #f2c2d2; margin-left: auto; }  /* Organized by BMVC */
     #schedule .sch-time .sch-tag { margin-top: 6px; }
-    /* Paper slots: same shape as tags, one pastel color per slot position */
-    #schedule .sch-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; list-style: none; padding: 0; margin: 14px 0 0; }
-    #schedule .sch-slots li { background: var(--s-bg); border: 1px solid var(--s-line); border-top: 3px solid var(--s-ink); border-radius: 10px; padding: 7px 6px; text-align: center; color: var(--s-ink); font-size: 0.72em; font-weight: 700; letter-spacing: 0.6px; line-height: 1.4; text-transform: uppercase; font-variant-numeric: tabular-nums; }
-    #schedule .sch-slots li b { display: block; font-size: 1.3em; letter-spacing: 0; }
+    /* Paper slots: one row per paper (time | ID | title + authors), one pastel color per slot position */
+    #schedule .sch-slots { display: grid; gap: 8px; list-style: none; padding: 0; margin: 14px 0 0; }
+    #schedule .sch-slots li { display: grid; grid-template-columns: 48px 52px 1fr; column-gap: 12px; align-items: baseline; background: var(--s-bg); border: 1px solid var(--s-line); border-left: 4px solid var(--s-ink); border-radius: 10px; padding: 9px 14px; color: var(--s-ink); font-size: 0.85em; line-height: 1.4; }
+    #schedule .sch-slots li b { font-size: 1.05em; font-variant-numeric: tabular-nums; }
+    #schedule .sch-paper-title { display: block; font-weight: 700; letter-spacing: 0.3px; }
+    #schedule .sch-paper-id { text-align: center; font-weight: 700; padding: 1px 0; border-radius: 6px; background: #ffffff; border: 1px solid var(--s-line); font-size: 0.9em; white-space: nowrap; }
+    #schedule .sch-paper-authors { display: block; margin-top: 4px; color: #3f4d59; letter-spacing: 0.3px; }
+    #schedule .sch-paper-authors strong { color: inherit; font-weight: 700; }  /* Surnames: bold only, not the site-wide #main strong color */
     #schedule .sch-slots li:nth-child(1) { --s-bg: #fdf3c8; --s-ink: #6b4f00; --s-line: #f1df98; }  /* Butter */
     #schedule .sch-slots li:nth-child(2) { --s-bg: #d4f1f4; --s-ink: #0c5660; --s-line: #a9dfe5; }  /* Aqua */
     #schedule .sch-slots li:nth-child(3) { --s-bg: #f3e1f7; --s-ink: #6b2580; --s-line: #e2c2eb; }  /* Orchid */
@@ -210,6 +214,7 @@
         <div class="actions">
           <a href="#callforpapers" class="btn-get-started" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">CALL FOR PAPERS</a>
           <a href="#dataset" class="btn-services" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">IMPORTANT DATES</a>
+          <a href="#schedule" class="btn-services" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">WORKSHOP SCHEDULE</a>
           <a href="#BMVC" class="btn-get-started contest-link" data-external-url="https://bmvc2026.bmva.org" style="padding: 10px 20px; border-radius: 25px; font-weight: bold !important;">BMVC WEBSITE</a>
 
         </div>
@@ -592,11 +597,11 @@
                         <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>2 min. Q&amp;A</span>
                       </div>
                       <ul class="sch-slots">
-                        <li><b>10:45</b>Paper 1</li>
-                        <li><b>10:55</b>Paper 2</li>
-                        <li><b>11:05</b>Paper 3</li>
-                        <li><b>11:15</b>Paper 4</li>
-                        <li><b>11:25</b>Paper 5</li>
+                        <li><b>10:45</b><span class="sch-paper-id">ID 2</span><div><span class="sch-paper-title">&ldquo;CLOSING THE ESTIMATION GAP: TRAINING-FREE TRANSDUCTIVE INFERENCE FOR CROSS-DOMAIN FEW-SHOT ACTION RECOGNITION&rdquo;</span><span class="sch-paper-authors">Changyi <strong>LI</strong>*, Zeyu <strong>YANG</strong>, Yu <strong>XIAO</strong></span></div></li>
+                        <li><b>10:55</b><span class="sch-paper-id">ID 11</span><div><span class="sch-paper-title">&ldquo;TRUST THE RIGHT FEATURES: UNCERTAINTY-GUIDED ATTENTION FOR HETEROGENEOUS BACKBONE FUSION IN FEW-SHOT OUT-OF-DOMAIN CLASSIFICATION&rdquo;</span><span class="sch-paper-authors">Moritz <strong>SCHAUER</strong>*, Mohamed Amine <strong>GUEZGUEZ</strong>, Jacob <strong>SCHWASS</strong>, Ahmed <strong>HAMMAM</strong>, Seyed Eghbal <strong>GHOBADI</strong></span></div></li>
+                        <li><b>11:05</b><span class="sch-paper-id">ID 14</span><div><span class="sch-paper-title">&ldquo;BEYOND SEEN GENERATORS: ROBUST LOCALIZED DEEPFAKE DETECTION IN CT IMAGING UNDER GENERATOR-INDUCED DISTRIBUTION SHIFT&rdquo;</span><span class="sch-paper-authors">Ludovica <strong>POMPILIO</strong>*, Francesco <strong>DI FEOLA</strong>, Matteo <strong>TORTORA</strong>, Valerio <strong>GUARRASI</strong>, Paolo <strong>SODA</strong></span></div></li>
+                        <li><b>11:15</b><span class="sch-paper-id">ID 15</span><div><span class="sch-paper-title">&ldquo;MONOCULAR HD-MAP POSE REFINEMENT VIA LANE-TO-MAP ALIGNMENT AND GNSS-CONSTRAINED PARTICLE FILTERING&rdquo;</span><span class="sch-paper-authors">Andreas <strong>KATSAROS</strong>, Alexandros <strong>GKILLAS</strong>*, Nikolaos <strong>POULOPOULOS</strong>, Christos <strong>ANAGNOSTOPOULOS</strong>, Aris <strong>LALOS</strong>, Huu M. <strong>LE</strong>, Duong Van <strong>NGUYEN</strong></span></div></li>
+                        <li><b>11:25</b><span class="sch-paper-id">ID 16</span><div><span class="sch-paper-title">&ldquo;A TRAINING-FREE VISION AND LANGUAGE FUSION FRAMEWORK FOR DOMAIN GENERALISATION IN PLANT DISEASE CLASSIFICATION&rdquo;</span><span class="sch-paper-authors">Adil <strong>FAROOQ</strong>*, Rudi <strong>VILLING</strong></span></div></li>
                       </ul>
                     </div>
                   </li>
@@ -620,11 +625,11 @@
                         <span class="sch-tag tag-qa"><i class="bi bi-chat-dots-fill"></i>2 min. Q&amp;A</span>
                       </div>
                       <ul class="sch-slots">
-                        <li><b>11:40</b>Paper 1</li>
-                        <li><b>11:50</b>Paper 2</li>
-                        <li><b>12:00</b>Paper 3</li>
-                        <li><b>12:10</b>Paper 4</li>
-                        <li><b>12:20</b>Paper 5</li>
+                        <li><b>11:40</b><span class="sch-paper-id">ID 8</span><div><span class="sch-paper-title">&ldquo;INFERENCE-TIME FUSION FOR FROZEN IMAGE RESTORATION&rdquo;</span><span class="sch-paper-authors">Zhinan <strong>XIONG</strong>*</span></div></li>
+                        <li><b>11:50</b><span class="sch-paper-id">ID 9</span><div><span class="sch-paper-title">&ldquo;CHANGING THE SOURCE: SIMPLE SOURCE DISTRIBUTIONS FOR CONDITIONAL FLOW RESTORATION&rdquo;</span><span class="sch-paper-authors">Zhinan <strong>XIONG</strong>*</span></div></li>
+                        <li><b>12:00</b><span class="sch-paper-id">ID 17</span><div><span class="sch-paper-title">&ldquo;SYNTHETIC SUPERVISION FOR IMAGE-BASED REGRESSION OF PHYSICAL DEVIATIONS: THE SHACKLEWEAR CASE STUDY&rdquo;</span><span class="sch-paper-authors">Maidah Binte <strong>TARIQ</strong>*, Krystian <strong>MIKOLAJCZYK</strong></span></div></li>
+                        <li><b>12:10</b><span class="sch-paper-id">ID 22</span><div><span class="sch-paper-title">&ldquo;WHICH IMAGES TO ADD? EVALUATING IMAGE DOMAINS FOR ECOLOGICAL WEB-BASED MODELS&rdquo;</span><span class="sch-paper-authors">Jorrit <strong>GILS</strong>*, Aishwarya <strong>VENKATARAMANAN</strong>, Christian <strong>ICKLER</strong>, Joachim <strong>DENZLER</strong></span></div></li>
+                        <li><b>12:20</b><span class="sch-paper-id">ID 23</span><div><span class="sch-paper-title">&ldquo;ENHANCING TRANSFERABILITY OF TARGETED ADVERSARIAL ATTACKS FOR OBJECT DETECTION&rdquo;</span><span class="sch-paper-authors">Alexis <strong>WINTER</strong>*, Romaric <strong>AUDIGIER</strong>, Angélique <strong>LOESCH</strong>, Bertrand <strong>LUVISON</strong></span></div></li>
                       </ul>
                     </div>
                   </li>
